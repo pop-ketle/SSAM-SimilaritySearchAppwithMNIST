@@ -1,0 +1,53 @@
+#+STARTUP: indent
+
+#+OPTIONS: \n:t
+#+OPTIONS: ^:{}  # アンダースコアで下付きを無効化
+
+* PythonとFlaskで類似画像を検索できるアプリを作ってみようPart1
+
+** 概要
+タイトルの通りです。今回は簡単にデータが手に入ってかつデータサイズも小さいご存知MNISTに対して
+MNISTの画像を入れると似たMNISTの画像を見つけてくれる、そんなアプリを作ることで近似近傍探索についての話と
+Flaskを使ったアプリ作りについての話を自分のメモもかねて書いていきます。
+
+** 手順
+*** 作業ディレクトリをつくろう！
+- 作業ディレクトリ
+適当に名前を決めていいですが、私は調子に乗って SSAM-SimilaritySearchAppwithMNIST なんて洒落た名前をつけてみました。
+- MNIST用ディレクトリ
+次にMNISTのデータを保存しておくフォルダを作成しましょう。そうしないと毎回ダウンロードしてくる必要があって面倒です。
+static/mnist_dataみたいな名前でフォルダを作っておきましょう。
+
+- 現在のディレクトリ構成はこんな感じです
+#+BEGIN_SRC
+SSAM-SimilaritySearchAppwithMNIST
+└── static
+    └── mnist_data
+#+END_SRC
+
+*** MNISTデータをダウンロードしてこよう！
+- MNISTって何？
+有名なので、今更説明もいらないと思いますが知らない人のために説明すると、28x28サイズの手書きの数字の画像です。
+手軽に使えるデータなので、よく機械学習のモデルの精度の評価に使われたりしますが、まあきれいなデータなので大体精度は高く出ます。
+(この記事みたいに)MNISTで高い精度の出るモデルを作れました！みたいな記事はそこんところ注意した方がいいです。
+
+- 使用するライブラリ
+最初に今回使うライブラリをまとめて書いておいた方が親切だと思うのでそうします。
+#+BEGIN_SRC
+import os
+import gzip
+import pickle
+import numpy as np
+import urllib.request
+from mnist import MNIST
+from annoy import AnnoyIndex
+
+from sklearn.metrics import accuracy_score
+#+END_SRC
+
+- MNISTをダウンロードする
+早速コードを書いていきます。
+#+BEGIN_SRC  Python
+def load_mnist():
+
+#+END_SRC
